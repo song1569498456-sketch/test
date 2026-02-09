@@ -97,6 +97,27 @@ top_n: 10
 max_concurrency: 8
 ```
 
+## 快速生成可用配置（推荐）
+
+如果你不知道 `rpc_url`、token 地址怎么填，可以先用内置脚本生成：
+
+```bash
+python -m src.tools.init_config --chain base --quote-source 1inch --rpc-url "https://<provider-endpoint>" --out config.generated.yaml
+```
+
+可选参数：
+- `--chain`: `base` / `ethereum`
+- `--quote-source`: `1inch` / `uniswap`
+- `--oneinch-api-key`: 可选，1inch API key
+
+脚本会自动填充常用 token 地址（USDC/WETH/DAI）与 Uniswap V3 factory/quoter 地址，你只需要提供 RPC URL。
+
+### 什么是 RPC URL / key？
+
+- `rpc_url`：访问链上节点的 HTTP 地址（例如 Alchemy、Infura、Ankr、QuickNode 提供）。
+- `<YOUR_KEY>`：通常是节点服务商给你的 API Key，拼在 URL 里用于鉴权。
+- 你可以先注册任一节点服务商，创建 Base 或 Ethereum 主网应用，然后复制它给你的 HTTPS endpoint 填到 `--rpc-url`。
+
 ## 运行
 
 ```bash
